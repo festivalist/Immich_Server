@@ -1,5 +1,7 @@
 # Immich_Server
-Immich Server für Andi
+#### useful sites
+- https://docs.immich.app/install/docker-compose/
+- 
 
 # 1. Install Ubuntu on a USB stick using rufus e.g. `ubuntu-24.04.3-live-server-amd64` image
 ## 1.1 boot PC from stick, install, setup wifi etc
