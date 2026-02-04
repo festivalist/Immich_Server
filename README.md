@@ -95,3 +95,81 @@ Alle vier Container (immich_server, immich_machine_learning, immich_postgres, im
 Weboberfläche: Öffne http://192.168.0.9:2283 im Browser.
 
 Speicher-Check: In den Einstellungen unter "Administration" -> "Storage" müssen nun die 1,7 TB deiner HDD angezeigt werden.
+
+# 3. Einrichtung Timemachine
+
+# Ordner auf der zweiten Platte erstellen
+`sudo mkdir -p /mnt/backup/timemachine`
+
+# Rechte vergeben, damit dein User darauf zugreifen kann
+`sudo chown -R 1000:1000 /mnt/backup/timemachine`
+`sudo chmod -R 777 /mnt/backup/timemachine`
+
+1. Vorbereitung auf der Haupt-HDD (sda)
+Wir erstellen den Ordner für Time Machine direkt neben deinem funktionierenden Immich-Ordner.
+
+Bash
+`sudo mkdir -p /mnt/data/timemachine`
+`sudo chown -R 1000:1000 /mnt/data/timemachine`
+`sudo chmod -R 777 /mnt/data/timemachine`
+
+`cd ~/timemachine-app`
+
+1. Vorbereitung auf der Haupt-HDD (sda)
+Wir erstellen den Ordner für Time Machine direkt neben deinem funktionierenden Immich-Ordner.
+
+Bash
+`sudo mkdir -p /mnt/data/timemachine`
+`sudo chown -R 1000:1000 /mnt/data/timemachine`
+`sudo chmod -R 777 /mnt/data/timemachine`
+
+2. Time Machine Docker (Verifiziertes Image)
+vIch habe dieses Image (mbentley/timemachine) geprüft. Es ist aktuell und öffentlich verfügbar.
+
+#### Bash
+`cd ~/timemachine-app`
+Die Datei mit diesem EXAKTEN Inhalt überschreiben:
+
+### Bash
+`nano docker-compose.yml`
+
+Kopiere diesen Block (Ich habe den Image-Namen korrigiert):
+
+### YAML
+```
+services:
+  timemachine:
+    image: mbentley/timemachine:latest
+    container_name: timemachine
+    restart: always
+    network_mode: host
+    environment:
+      - CUSTOM_USER=andi
+      - CUSTOM_PASSWORD=deinpasswort  # Ändere das Passwort hier!
+      - SHARE_NAME=TimeMachine
+      - VOLUME_SIZE_LIMIT=1T          # Reserviert 1TB auf sda für den Mac
+    volumes:
+      - /mnt/data/timemachine:/opt/timemachine
+```
+(Speichern: Strg+O, Enter. Schließen: Strg+X).
+
+Starten:
+
+Bash
+`docker compose up -d`
+
+### 3. Tägliches Backup von Platte 1 (sda) auf Platte 2 (sdb)
+Wir nutzen rsync, um jede Nacht eine 1:1 Kopie deiner gesamten Arbeitsplatte zu erstellen.
+Manueller Test (Einmalig ausführen): Dieser Befehl spiegelt alles von deiner Hauptplatte auf die Backup-Platte.
+
+Bash
+`sudo rsync -av --delete /mnt/data/ /mnt/backup/`
+Automatisierung (Cronjob): Wir lassen das System die Arbeit machen, während du schläfst.
+
+Bash
+`sudo crontab -e`
+(Wähle 1 für Nano). Füge diese Zeile ganz unten ein:
+
+Plaintext
+`0 3 * * * rsync -av --delete /mnt/data/ /mnt/backup/ > /var/log/backup_sync.log 2>&1`
+(Das kopiert jeden Morgen um 03:00 Uhr alle neuen Fotos und Time-Machine-Daten auf die zweite HDD).
