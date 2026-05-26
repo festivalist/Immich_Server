@@ -183,8 +183,13 @@ Plaintext
 - error occurs of install process has no access to drive (ssd). follow these steps
 - Terminal öffnen: Drücke im Installationsbildschirm Alt + F2, um in die Konsole zu wechseln
 - SSD identifizieren: Führe den Befehl lsblk aus, um die Laufwerksbezeichnung (z. B. /dev/sda) zu ermitteln
-- Partitionen löschen: Führe nacheinander folgende Befehle aus (ersetze /dev/sda bei Bedarf): `wipefs -a /dev/sda`
-- `sgdisk --zap-all /dev/sda`
-- `dd if=/dev/zero of=/dev/sda bs=1M count=100`
+- Partitionen löschen: Führe nacheinander folgende Befehle aus (ersetze /dev/sda bei Bedarf): `sudo wipefs -a /dev/sda`
+- sollte es hierbei Probleme geben machen wir folgendes
+  - Eingehängte Partitionen trennen: `sudo umount -l /dev/sda*`
+  - Swap-Speicher deaktivieren: `sudo swapoff -a`
+  - Device-Mapper und LVM auflösen: `sudo dmsetup remove_all`
+  - Löschvorgang erzwingen: `sudo wipefs -af /dev/sda ` 
+- `sudo sgdisk --zap-all /dev/sda`
+- `sudo dd if=/dev/zero of=/dev/sda bs=1M count=100`
 - Zurückkehren: Drücke Alt + F1, um zurück zum Installer zu wechseln, und starte den Vorgang neu
 - Alternativ mit live Ubuntu stick und `gparted`o.ä. die partition löschen
