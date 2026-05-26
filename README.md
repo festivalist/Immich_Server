@@ -6,6 +6,8 @@
 # 1. Install Ubuntu on a USB stick using rufus e.g. `ubuntu-24.04.3-live-server-amd64` image
 - Partitionsschema `GPT`
 ## 1.1 boot PC from stick, install, setup wifi etc
+- in case of crash during installation `removing previous storage devices` see [removing previous storage devices](#removing-previous-storage-devices)  
+- 
 ## 1.2 first boot `sudo apt update && sudo apt upgrade -y`
 
 # 2. Immich install
@@ -174,3 +176,15 @@ Bash
 Plaintext
 `0 3 * * * rsync -av --delete /mnt/data/ /mnt/backup/ > /var/log/backup_sync.log 2>&1`
 (Das kopiert jeden Morgen um 03:00 Uhr alle neuen Fotos und Time-Machine-Daten auf die zweite HDD).
+
+
+
+## removing previous storage devices
+- error occurs of install process has no access to drive (ssd). follow these steps
+- Terminal öffnen: Drücke im Installationsbildschirm Alt + F2, um in die Konsole zu wechseln
+- SSD identifizieren: Führe den Befehl lsblk aus, um die Laufwerksbezeichnung (z. B. /dev/sda) zu ermitteln
+- Partitionen löschen: Führe nacheinander folgende Befehle aus (ersetze /dev/sda bei Bedarf): `wipefs -a /dev/sda`
+- `sgdisk --zap-all /dev/sda`
+- `dd if=/dev/zero of=/dev/sda bs=1M count=100`
+- Zurückkehren: Drücke Alt + F1, um zurück zum Installer zu wechseln, und starte den Vorgang neu
+- Alternativ mit live Ubuntu stick und `gparted`o.ä. die partition löschen
