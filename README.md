@@ -4,11 +4,12 @@
 - 
 
 # 1. Install Ubuntu on a USB stick using rufus e.g. `ubuntu-24.04.3-live-server-amd64` image
+- Partitionsschema `GPT`
 ## 1.1 boot PC from stick, install, setup wifi etc
 ## 1.2 first boot `sudo apt update && sudo apt upgrade -y`
 
 # 2. Immich install
-Docker-Netzwerk reparieren (DNS & MTU). Ohne diesen Schritt konnte Docker die offiziellen Images nicht von GitHub herunterladen.
+- Docker-Netzwerk reparieren (DNS & MTU). Ohne diesen Schritt konnte Docker die offiziellen Images nicht von GitHub herunterladen.
 
 ## 2.1 Konfigurationsdatei öffnen:
 
