@@ -11,6 +11,7 @@
 ## 1.2 first boot `sudo apt update && sudo apt upgrade -y`
 
 # 2. Immich install
+- https://docs.immich.app/install/docker-compose/
 - Docker-Netzwerk reparieren (DNS & MTU). Ohne diesen Schritt konnte Docker die offiziellen Images nicht von GitHub herunterladen.
 
 ## 2.1 Konfigurationsdatei öffnen:
