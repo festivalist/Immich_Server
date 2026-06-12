@@ -45,17 +45,17 @@ Sicherheits-Marker (.immich) erstellen: Dies signalisiert Immich, dass der Mount
 
 Bash
 
-`sudo touch /mnt/data/immich/.immich`
-`sudo touch /mnt/data/immich/library/.immich`
-`sudo touch /mnt/data/immich/upload/.immich`
-`sudo touch /mnt/data/immich/profile/.immich`
-`sudo touch /mnt/data/immich/thumbs/.immich`
-`sudo touch /mnt/data/immich/backups/.immich`
-`sudo touch /mnt/data/immich/encoded-video/.immich`
+`sudo touch /mnt/data/immich/.immich`  
+`sudo touch /mnt/data/immich/library/.immich`  
+`sudo touch /mnt/data/immich/upload/.immich`  
+`sudo touch /mnt/data/immich/profile/.immich`  
+`sudo touch /mnt/data/immich/thumbs/.immich`  
+`sudo touch /mnt/data/immich/backups/.immich`  
+`sudo touch /mnt/data/immich/encoded-video/.immich`  
 Berechtigungen für den Docker-Nutzer (UID 1000) setzen:
 
 Bash
-`sudo chown -R 1000:1000 /mnt/data/immich`
+`sudo chown -R 1000:1000 /mnt/data/immich`  
 `sudo chmod -R 775 /mnt/data/immich`
 
 ## 2.3. Installation der Immich-Konfiguration
@@ -69,7 +69,7 @@ Bash
 ### Die Konfigurationsdateien herunterladen:
 
 Bash
-`wget https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml`
+`wget https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml`  
 `wget -O .env https://github.com/immich-app/immich/releases/latest/download/example.env`
 
 Die .env-Datei an dein Setup anpassen:
