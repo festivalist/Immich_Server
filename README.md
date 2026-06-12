@@ -13,6 +13,23 @@
 # 2. Immich install
 - https://docs.immich.app/install/docker-compose/
 - Docker-Netzwerk reparieren (DNS & MTU). Ohne diesen Schritt konnte Docker die offiziellen Images nicht von GitHub herunterladen.
+## Alternative Anleitung hier
+`https://www.hostmycode.com/tutorials/set-up-immich-on-ubuntu-2404-with-docker`  
+- Zu Punkt 2. Step 2: Install Docker and Docker Compose
+hier fehlen die Absätz. das ganze sind einzelne befehlen und zwar so:
+
+`sudo apt-get updatesudo apt-get install ca-certificates curl`  
+`sudo install -m 0755 -d /etc/apt/keyrings`  
+`sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc`  
+`sudo chmod a+r /etc/apt/keyrings/docker.asc`  
+### Add the repository to Apt sources:
+`echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`  
+`sudo apt-get update`  
+``  
+``  
+``  
+``  
+``  
 
 ## 2.1 Konfigurationsdatei öffnen:
 
