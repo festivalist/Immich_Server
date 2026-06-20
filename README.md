@@ -10,7 +10,31 @@
 - 
 ## 1.2 first boot `sudo apt update && sudo apt upgrade -y`
 
-# 2. Immich install
+# 2. Docker & Immich install
+- One Shot Script ziehen, exec Rechte setzen und skript ausführen. das installiert docker & immich
+```
+curl -fsSL https://raw.githubusercontent.com/festivalist/immich-wyse5070-bootstrap-rclone/main/bootstrap.sh -o bootstrap.sh
+less bootstrap.sh        # Sichtpruefung
+chmod +x bootstrap.sh
+sudo ./bootstrap.sh
+```  
+- Beim tailscale installer kann es sein das er abbricht. Den rufen wir dann separat über
+- PFAD UNBEDINGT PRÜFEN!!! ``
+- Wenn tailscale korrekt installiert ist dann 
+  - Weboberflaeche oeffnen: http://<server-ip>:2283
+  - Ersten Administrator anlegen, danach pro Person einen eigenen Benutzer.
+  - Backup einmalig testen: sudo systemctl start immich-backup.service und Log pruefen.
+  - Healthcheck ausfuehren: sudo /opt/immich/scripts/healthcheck.sh
+  - Optional: Fernzugriff von unterwegs einrichten - sudo /opt/immich/scripts/setup-remote-access.sh (Tailscale empfohlen; Kapitel 14).
+
+
+
+
+
+
+
+
+# 2. DEPRECATED 2. Immich install
 - https://docs.immich.app/install/docker-compose/
 - Docker-Netzwerk reparieren (DNS & MTU). Ohne diesen Schritt konnte Docker die offiziellen Images nicht von GitHub herunterladen.
 ## Alternative Anleitung hier
