@@ -1,7 +1,7 @@
 # Immich_Server
 #### useful sites
-- https://docs.immich.app/install/docker-compose/
-- 
+- `https://docs.immich.app/install/docker-compose/` 
+- mein Repo dank claude ``
 
 # 1. Install Ubuntu on a USB stick using rufus e.g. `ubuntu-24.04.3-live-server-amd64` image
 - Partitionsschema `GPT`
@@ -10,7 +10,7 @@
 - 
 ## 1.2 first boot `sudo apt update && sudo apt upgrade -y`
 
-# 2. Docker & Immich install
+# 2. Docker & Immich auf Server installieren
 - One Shot Script ziehen, exec Rechte setzen und skript ausführen. das installiert docker & immich
 ```
 curl -fsSL https://raw.githubusercontent.com/festivalist/immich-wyse5070-bootstrap-rclone/main/bootstrap.sh -o bootstrap.sh
@@ -18,15 +18,34 @@ less bootstrap.sh        # Sichtpruefung
 chmod +x bootstrap.sh
 sudo ./bootstrap.sh
 ```  
-- Beim tailscale installer kann es sein das er abbricht. Den rufen wir dann separat über
-- PFAD UNBEDINGT PRÜFEN!!! ``
-- Wenn tailscale korrekt installiert ist dann 
-  - Weboberflaeche oeffnen: http://<server-ip>:2283
+- Beim tailscale installer kann es sein das er abbricht. dann rufen wir das offizielle script
+- `curl -fsSL https://tailscale.com/install.sh | sh`  
+- `sudo tailscale up`  
+- Wenn tailscale korrekt auf ubunutu Server installiert ist dann 
+  - Immich Weboberflaeche oeffnen: http://<server-ip>:2283
   - Ersten Administrator anlegen, danach pro Person einen eigenen Benutzer.
-  - Backup einmalig testen: sudo systemctl start immich-backup.service und Log pruefen.
-  - Healthcheck ausfuehren: sudo /opt/immich/scripts/healthcheck.sh
+  - Backup einmalig testen: `sudo systemctl start immich-backup.service` und Log pruefen.
+    - Hat bei mir funktioniert
+  - Healthcheck ausfuehren: `sudo /opt/immich/scripts/healthcheck.sh`
+    - hat bei mir funktioniert
   - Optional: Fernzugriff von unterwegs einrichten - sudo /opt/immich/scripts/setup-remote-access.sh (Tailscale empfohlen; Kapitel 14).
 
+# 3 Tailscale im PC Browser konfigurieren
+- `https://login.tailscale.com/admin/machines`
+<img width="1495" height="962" alt="image" src="https://github.com/user-attachments/assets/b822862b-ca2f-44ba-a1dd-796433368d41" />
+
+- *Client Device* zur Verbindung eines Handys mit dem Server auswählen
+- OS wählen, und Link erstellen. Dann Link versenden und auf Device der Wahl anklicken
+<img width="642" height="601" alt="image" src="https://github.com/user-attachments/assets/2214ee3c-b15f-41ea-afbd-77e3f0d702c4" />
+
+
+# 4 Tailscale auf Handy installieren
+- 
+
+
+# 5 Immich auf Handy installieren
+- App downloaden
+- 
 
 
 
