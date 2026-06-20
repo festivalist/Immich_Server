@@ -45,7 +45,24 @@ sudo ./bootstrap.sh
 
 # 5 Immich auf Handy installieren
 - App downloaden
-- 
+- mit credentials einloggen die im webinterfacec am PC vergeben wurden
+#### Klickpfad zum Einrichten der IP
+<img width="565" height="587" alt="image" src="https://github.com/user-attachments/assets/180e968b-0f4b-4a6f-9506-e88a9f0c010a" />  
+
+<img width="502" height="875" alt="image" src="https://github.com/user-attachments/assets/4c40cef1-df81-44d0-a3b2-0aeba0abde5a" />  
+
+<img width="548" height="951" alt="image" src="https://github.com/user-attachments/assets/24098dac-92a8-4439-995b-b460117006ac" />  
+
+<img width="508" height="1036" alt="image" src="https://github.com/user-attachments/assets/3c0156d9-9ff6-4882-8160-ede3b2417568" />  
+
+#### WICHTIG!
+- Das WLAN kann er sich allein ziehen
+- Den Server Endpunkt setzen wir auf die IP des Servers, Port hart 2283 `/api` ist auch Standard
+- Externes Netzwerk: Hier müssen wir ins Tailscale schauen wie der DynDNS heißt, dass sehen wir zb in der Tailscale App (DDNS muss manuell angemacht werden)
+<img width="525" height="666" alt="image" src="https://github.com/user-attachments/assets/d407bbe9-a0f8-4975-bca0-b3dbb06a2a6c" />
+
+
+
 
 
 
