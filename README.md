@@ -1,7 +1,7 @@
 # Immich_Server
 #### useful sites
 - `https://docs.immich.app/install/docker-compose/` 
-- mein Repo dank claude ``
+- mein Repo dank claude `https://github.com/festivalist/immich-wyse5070-bootstrap-rclone/tree/main`
 
 # 1. Install Ubuntu on a USB stick using rufus e.g. `ubuntu-24.04.3-live-server-amd64` image
 - Partitionsschema `GPT`
