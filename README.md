@@ -3,6 +3,13 @@
 - `https://docs.immich.app/install/docker-compose/` 
 - mein Repo dank claude `https://github.com/festivalist/immich-wyse5070-bootstrap-rclone/tree/main`
 
+> **Stand: November 2026** — Der Bootstrap-Installer (siehe Repo oben) installiert
+> jetzt **Immich v3** (`IMMICH_VERSION=v3`, Major gepinnt, Compose-Template
+> entspricht dem offiziellen v3-Layout inkl. `DB_STORAGE_TYPE: 'HDD'` und
+> `MACHINE_LEARNING_MODEL_REVISION: 'v2'`). Die Produktiv-Installation wurde am
+> 09.11.2026 von v2.7.5 auf v3.3.6 migriert; Details im Bootstrap-Repo unter
+> `CHANGELOG.md` (v6).
+
 # 1. Install Ubuntu on a USB stick using rufus e.g. `ubuntu-24.04.3-live-server-amd64` image
 - Partitionsschema `GPT`
 ## 1.1 boot PC from stick, install, setup wifi etc
